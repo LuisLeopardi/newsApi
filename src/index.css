@@ -13,6 +13,10 @@ body {
 	overflow-x: hidden;
 }
 
+#wrap {
+	overflow-x: hidden;
+}
+
 .main {
 	position: relative;
 	display: flex;

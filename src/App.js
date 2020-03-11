@@ -52,7 +52,7 @@ render(){
 
 let {data, src, main, number, startApi} = this.state;
 
-//startApi();
+startApi();
 
 window.addEventListener('scroll', ()=>{
 
