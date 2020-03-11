@@ -19,7 +19,7 @@ state = {
 
   data: false,
 
-  api:'http://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=7f7eb775aee84e0ab98d46c34aa949b9',
+  api:'https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=7f7eb775aee84e0ab98d46c34aa949b9',
 
   startApi: () => {
 
@@ -39,12 +39,12 @@ handleSearch = (arr) => {
 }
 
 changeCountryApi = (id) => {
-  this.setState({api:`http://newsapi.org/v2/top-headlines?country=${id}&category=${this.state.category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
+  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${id}&category=${this.state.category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
   this.setState({country:id});
 }
 
 changeCategoryApi = (id) => {
-  this.setState({api:`http://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${id}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
+  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${id}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
   this.setState({category:id});
 }
 
