@@ -9,7 +9,7 @@ import {ExploreFilter} from './exploreFilter.jsx';
 import {CountryFilter} from './countryFilter.jsx';
 import {Atribution} from './atribution.jsx';
 
-export const Sidebar = ({data, src, changeCountryApi, changeCategoryApi}) => {
+export const Sidebar = ({data, src, changeApi}) => {
 
   const [chosen, setChosen] = useState();
   const [sidebar, setSidebar] = useState('sidebar');
@@ -17,16 +17,16 @@ export const Sidebar = ({data, src, changeCountryApi, changeCategoryApi}) => {
 
   return (
 
-    <div className = { data ? sidebar : 'none'}>
+    <div className = { /*data ? */sidebar /*: 'none'*/}>
 
 		<div className='sidebar-content'> 
 			{ 
 				chosen === lens ?  
 				<SearchFilter data={data} src={src}/> :
 				chosen === compass ?
-				<ExploreFilter changeCategoryApi={changeCategoryApi} src={src}/> :
+				<ExploreFilter changeApi={changeApi}/> :
 				chosen === flag ?
-				<CountryFilter changeCountryApi={changeCountryApi} src={src}/> :
+				<CountryFilter changeApi={changeApi}/> :
 				<Atribution/> 
 			} 
 		</div>

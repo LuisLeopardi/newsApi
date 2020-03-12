@@ -38,21 +38,28 @@ handleSearch = (arr) => {
   this.setState({src: arr });
 }
 
-changeCountryApi = (id) => {
-  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${id}&category=${this.state.category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
-  this.setState({country:id});
-}
+changeApi = (country, category) => {
 
-changeCategoryApi = (id) => {
-  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${id}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
-  this.setState({category:id});
+  this.setState({src:false});
+  this.setState({number:10});
+
+ if (country) {
+  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${country}&category=${this.state.category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
+  this.setState({country:country});
+ }
+
+ if (category) {
+  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
+  this.setState({category:category});
+ }
+
+ this.state.startApi()
+
 }
 
 render(){
 
-let {data, src, main, number, startApi} = this.state;
-
-startApi();
+let {data, src, main, number, startApi, api} = this.state;
 
 window.addEventListener('scroll', ()=>{
 
@@ -81,9 +88,10 @@ return (
     src={this.handleSearch} 
     changeCountryApi={this.changeCountryApi}
     changeCategoryApi={this.changeCategoryApi}
+    changeApi={this.changeApi}
     />
 
-    <main className={main} onClick={this.test}>
+    <main className={main}>
 
       {
 
@@ -94,6 +102,7 @@ return (
 
       data.articles ? 
       <Articles 
+      api={api}
       data={data} 
       number={number} 
       load={this.load}
@@ -117,3 +126,4 @@ return (
 }
 
 export default App;
+

@@ -7,14 +7,14 @@ import science from './img/categories/science.svg';
 import sports from './img/categories/sports.svg';
 import technology from './img/categories/technology.svg';
 
-export const ExploreFilter = ({changeCategoryApi, src}) => {
+export const ExploreFilter = ({changeApi}) => {
 
  const categories = [ 'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology' ];
  const images = [business, entertainment, general, health, science, sports, technology];
 
  const api = (e) => {
- 	src(false);
- 	changeCategoryApi(e.target.id);
+
+ 	changeApi(undefined,[e.target.id]);
  }
 
  return (
