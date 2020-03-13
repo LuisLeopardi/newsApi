@@ -7,13 +7,13 @@ class App extends Component {
 
 state = {
 
+  execute:true,
+
   category:'general',
 
   country:'us',
 
   number: 10,
-
-  main: 'main',
 
   src: false,
 
@@ -38,28 +38,40 @@ handleSearch = (arr) => {
   this.setState({src: arr });
 }
 
-changeApi = (country, category) => {
-
-  this.setState({src:false});
-  this.setState({number:10});
-
- if (country) {
-  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${country}&category=${this.state.category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
-  this.setState({country:country});
- }
-
- if (category) {
-  this.setState({api:`https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`})
-  this.setState({category:category});
- }
-
- this.state.startApi()
-
+changeCountryApi = country => {
+  this.setState({
+    api:`https://newsapi.org/v2/top-headlines?country=${country}&category=${this.state.category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`,
+    country:country,
+    data:false,
+    src:false,
+    number:10
+   }, ()=>{ this.state.startApi() }
+ ); 
 }
+
+changeCategoryApi = category => {
+  this.setState({
+    api:`https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${category}&apiKey=7f7eb775aee84e0ab98d46c34aa949b9`,
+    category:category,
+    data:false,
+    src:false,
+    number:10
+  }, () => { this.state.startApi() }
+ ); 
+}
+
+ start = () => {
+  this.state.startApi();
+  this.setState({execute:false})
+ }
 
 render(){
 
-let {data, src, main, number, startApi, api} = this.state;
+let {data, src, number, api, execute} = this.state;
+
+if(execute){
+  this.start();
+}
 
 window.addEventListener('scroll', ()=>{
 
@@ -88,10 +100,9 @@ return (
     src={this.handleSearch} 
     changeCountryApi={this.changeCountryApi}
     changeCategoryApi={this.changeCategoryApi}
-    changeApi={this.changeApi}
     />
 
-    <main className={main}>
+    <main className='main'>
 
       {
 

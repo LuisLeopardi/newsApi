@@ -1,6 +1,7 @@
 import React from 'react';
+import arrow from './img/arrow.svg';
 
-export const Icon = ({ active, count, onClick, src, alt, setSidebar, sidebar, setChosen}) => {
+export const Icon = ({ chosen, active, count, onClick, src, alt, setSidebar, sidebar, setChosen}) => {
 
   const handleSidebar = () => {
 
@@ -18,7 +19,17 @@ export const Icon = ({ active, count, onClick, src, alt, setSidebar, sidebar, se
 
   }
 
+  const exit = () => {
+    setSidebar('sidebar');
+    setChosen('');
+
+  }
+
   return (
-	<img onClick={handleSidebar} className={active ? 'icon active' : 'icon'} src={src} alt={alt}/>
+	<img 
+  onClick={alt === arrow ? exit : handleSidebar} 
+  className={chosen === arrow ? 'icon' : active ? 'icon active' : 'icon'} 
+  src={src} 
+  alt={alt}/>
   );
 };

@@ -3,30 +3,35 @@ import info from './img/info.svg';
 import flag from './img/flag.svg';
 import lens from './img/lens.svg';
 import compass from './img/compass.svg';
+import arrow from './img/arrow.svg';
 import {Icon} from './icon.jsx';
 import {SearchFilter} from './searchFilter.jsx';
 import {ExploreFilter} from './exploreFilter.jsx';
 import {CountryFilter} from './countryFilter.jsx';
 import {Atribution} from './atribution.jsx';
 
-export const Sidebar = ({data, src, changeApi}) => {
+
+export const Sidebar = ({data, src, changeCountryApi, changeCategoryApi}) => {
 
   const [chosen, setChosen] = useState();
   const [sidebar, setSidebar] = useState('sidebar');
-  const icons = [lens, compass, flag, info];
+  const icons = [compass, flag, info];
+
+  if(sidebar==='sidebar fullSize'){
+  	icons.push(arrow)
+  	
+  }
 
   return (
 
-    <div className = { /*data ? */sidebar /*: 'none'*/}>
+    <div className = { data ? sidebar : 'none'}>
 
 		<div className='sidebar-content'> 
 			{ 
-				chosen === lens ?  
-				<SearchFilter data={data} src={src}/> :
 				chosen === compass ?
-				<ExploreFilter changeApi={changeApi}/> :
+				<ExploreFilter changeCategoryApi={changeCategoryApi}/> :
 				chosen === flag ?
-				<CountryFilter changeApi={changeApi}/> :
+				<CountryFilter changeCountryApi={changeCountryApi}/> :
 				<Atribution/> 
 			} 
 		</div>
@@ -38,6 +43,7 @@ export const Sidebar = ({data, src, changeApi}) => {
 	         key = {icons}
 	         alt = {icons}
 	         active = {chosen === icons}
+	         chosen = {chosen}
              onClick = {() => setChosen(icons)}
              setSidebar = {setSidebar}
              sidebar = {sidebar}

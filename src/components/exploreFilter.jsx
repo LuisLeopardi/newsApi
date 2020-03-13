@@ -7,15 +7,10 @@ import science from './img/categories/science.svg';
 import sports from './img/categories/sports.svg';
 import technology from './img/categories/technology.svg';
 
-export const ExploreFilter = ({changeApi}) => {
+export const ExploreFilter = ({changeCategoryApi}) => {
 
  const categories = [ 'business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology' ];
  const images = [business, entertainment, general, health, science, sports, technology];
-
- const api = (e) => {
-
- 	changeApi(undefined,[e.target.id]);
- }
 
  return (
 
@@ -26,7 +21,7 @@ export const ExploreFilter = ({changeApi}) => {
  		<ul className='sidebar-grid'>
  			{
  			  categories.map( (c,i) => 
- 			  	<li onClick={api} 
+ 			  	<li onClick={ e => changeCategoryApi(e.target.id)} 
  			  	className='sidebar-item item-end'
  			  	key={c} 
  			  	id={c}> 
