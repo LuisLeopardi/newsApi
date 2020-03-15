@@ -9,6 +9,8 @@ state = {
 
   execute:true,
 
+  error:false,
+
   category:'general',
 
   country:'us',
@@ -29,6 +31,8 @@ state = {
 
       this.setState({ data: data });
 
+    }).catch(error=>{
+      this.setState({ error: error })
     })
   },
 
@@ -119,12 +123,13 @@ return (
       load={this.load}
       /> :
 
-      data.status === 'error' ?
-      <span className='limit'> limit reached </span> 
+      data.status === 'error'  ?
+
+      <span className='limit'> Error loading news </span> 
 
       :
 
-      <span className='loading'> loading news </span>  
+      <p className='loading'>loading news...</p>  
 
       }
 

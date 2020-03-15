@@ -2,15 +2,12 @@
 	font-family: 'Roboto', sans-serif;
 }
 
-html {
-	position: relative;
-}
-
-body {
+body, html {
 	position: relative;
 	margin: 0;
 	background-color: #000000;
 	overflow-x: hidden;
+	height: 100vh;
 }
 
 .main {
@@ -40,7 +37,14 @@ main p {
 	line-height: 25px;
 }
 
-.loading, .limit {
+.loading {
+	position: relative;
+	top: 50vh;
+	width: 100%;
+	text-align: center;
+}
+
+ .limit {
 	position: absolute;
 	top:50vh;
 	left: 0%;
@@ -49,41 +53,6 @@ main p {
 	background: unset;
 	font-size: 200%;
 	cursor: default;
-}
-
-.loading::before {
-	content: '';
-	position: absolute;
-	bottom: -80%;
-	left: 0;
-	width: 50px;
-	height: 8px;
-	border-radius: 50%;
-	background: #00fc08;
-	animation: loading-before 1s infinite linear;
-}
-
-.loading::after {
-	content: '';
-	position: absolute;
-	top: -80%;
-	right: 0;
-	width: 50px;
-	height: 8px;
-	border-radius: 50%;
-	background: #fcf400;
-	animation: loading-after 1s infinite linear;
-}
-
-.limit::after {
-	content: '';
-	position: absolute;
-	bottom: -5px;
-	left: 0%;
-	width: 181px;
-	height: 5px;
-	background: rgba(212, 21, 0, 0.8);
-	animation: limit 1s infinite linear;
 }
 
 main h1 {
@@ -284,51 +253,6 @@ main h1 {
   border-radius: 5px;
 }
 
-@keyframes loading-before {
-
-	0% {
-		left: 0%;
-		background:#fcf400;
-	} 50% {
-		left: 100%;
-		background:  #00fc08;
-	} 100% {
-		left: 0%;
-		background:#fcf400;
-	}
-
-}
-
-@keyframes loading-after {
-
-	0% {
-		right: 0%;
-		background: #fcf400;
-	} 50% {
-		right: 100%;
-		background: #00fc08;
-	} 100% {
-		right: 0%;
-		background: #fcf400;
-	}
-
-}
-
-@keyframes limit {
-
-	0% {
-		left: 0%;
-		background: rgba(212, 21, 0, 0.8);;
-	} 50% {
-		left: 100%;
-		background: rgba(212, 21, 0, 1);
-	} 100% {
-		left: 0%;
-		background: rgba(212, 21, 0, 0.8);
-	}
-
-}
-
 @media (max-width: 1020px) {
 	.articles-url {
 		right: -25%;
@@ -350,10 +274,14 @@ main h1 {
 	}
 }
 
-@media (max-width: 740px) {
+@media (max-width: 800px) {
 	.articles-url {
-		right: -50px;
+		right: -170px;
 	}
+}
+
+@media (max-width: 740px) {
+
 	main h1{
 		font-size: 100%;
 	}
@@ -366,8 +294,13 @@ main h1 {
 	}
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
+	.articles-url {
+		right: -120px;
+	}
+}
 
+@media (max-width: 640px) {
 	main h1{
 		font-size: 90%;
 	}
@@ -385,8 +318,11 @@ main h1 {
 		height: 30px;
 		border-width: 1px;
 	}
+	.articles-url {
+		right: -80px;
+	}
 	.article-footer {
-		bottom: -26%;
+		bottom: -20%;
 	}
 	.sidebar-item, .sidebar-filters p, .sidebar h3 {
 		font-size: 80%;
@@ -407,6 +343,12 @@ main h1 {
 	}
 	.active {
 		padding: 5px 5px 5px 28px;
+	}
+}
+
+@media (max-width: 600px){
+	.articles-url {
+		right: -50px;
 	}
 }
 
@@ -447,6 +389,9 @@ main h1 {
 	.articles-url {	
 		width: 350px;
 		right: -40px;
+	}
+	.article-footer {
+		bottom: -16%;
 	}
 }
 

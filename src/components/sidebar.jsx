@@ -24,7 +24,7 @@ export const Sidebar = ({data, src, changeCountryApi, changeCategoryApi}) => {
 
   return (
 
-    <div className = { data ? sidebar : 'none'}>
+    <div className = {sidebar}>
 
 		<div className='sidebar-content'> 
 			{ 

@@ -7,10 +7,9 @@ return (
 
 data.articles.slice(0,number).map(articles=>
 
-<a href={articles.url} className='articles-url'> 
+<a href={articles.url} className='articles-url' key={articles.title} target='_blank'> 
 
-<article 
-   key={articles.title} 
+<article  
    style= {articles.urlToImage ? 
    { backgroundImage: "url(" + articles.urlToImage + ")" }
    :
