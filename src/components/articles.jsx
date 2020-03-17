@@ -7,7 +7,12 @@ return (
 
 data.articles.slice(0,number).map(articles=>
 
-<a href={articles.url} className='articles-url' key={articles.title} target='_blank'> 
+<a href={articles.url} 
+className='articles-url' 
+key={articles.title} 
+target='_blank'
+rel = 'noopener noreferrer'
+> 
 
 <article  
    style= {articles.urlToImage ? 
