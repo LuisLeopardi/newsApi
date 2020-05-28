@@ -21,11 +21,11 @@ state = {
 
   data: false,
 
-  api:'https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=7f7eb775aee84e0ab98d46c34aa949b9',
+  api:'https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=7ce6371af7994bcebb72833ff29788fe',
 
   startApi: () => {
 
-    fetch(this.state.api, {headers: {'Access-Control-Allow-Origin': '*'}})
+    fetch(this.state.api)
     .then(response => response.json())
     .then(data => {
 
