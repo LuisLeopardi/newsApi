@@ -25,7 +25,7 @@ state = {
 
   startApi: () => {
 
-    fetch(this.state.api)
+    fetch(this.state.api, request.headers['Access-Control-Allow-Origin'] = '*')
     .then(response => response.json())
     .then(data => {
 
