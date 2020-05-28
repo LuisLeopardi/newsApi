@@ -25,7 +25,12 @@ state = {
 
   startApi: () => {
 
-    fetch(this.state.api)
+    fetch(this.state.api,{headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET',
+      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    }})
     .then(response => response.json())
     .then(data => {
 
